@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
     - uses: actions/checkout@v4
@@ -20,9 +20,8 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    - name: Change directory to gradlew location + Grant execute permission for gradlew
+    - name: Change directory to gradlew location + Grant execute permission for gradlew + Build with Gradle
       run: |
         cd GiftcardSite
         chmod +x gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
+        ./gradlew build
